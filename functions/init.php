@@ -38,6 +38,10 @@ add_action( 'wp_enqueue_scripts', 'fsdegrees_enqueue_script', 20 );
 function fsdegrees_enqueue_script() {
 	if (!is_admin()) {
 		wp_enqueue_script('main', get_bloginfo('template_url').'/public/js/app.min.js', false,false,true);
+
+        wp_localize_script('main','sharedData',array(
+            'contactForm' => do_shortcode('[contact-form-7 id="5" title="Contact form 1"]')
+        ));
 	}
 }
 
